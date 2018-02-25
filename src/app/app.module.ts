@@ -1,12 +1,14 @@
-import { WatcherComponent } from './watcher/watcher.component';
-import { HomeComponent } from './home/home.component';
+import { LogService } from './services/log.service';
+import { WatcherComponent } from './components/watcher/watcher.component';
+import { HomeComponent } from './components/home/home.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
-import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
+import { BsNavbarComponent } from './components/bs-navbar/bs-navbar.component';
+import { HttpModule } from '@angular/http';
 
 
 @NgModule({
@@ -18,13 +20,14 @@ import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     NgbModule.forRoot(),
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { path: 'watcher', component: WatcherComponent }
     ])
   ],
-  providers: [],
+  providers: [LogService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

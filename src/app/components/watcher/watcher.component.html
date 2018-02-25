@@ -1,0 +1,18 @@
+<h3> Logs </h3>
+<p *ngIf="!forecasts"><em>Loading...</em></p>
+<table *ngIf="logs" class="table">
+  <thead>
+    <tr>
+      <!--th scope="col">#</th-->
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let log of logs">
+      <!--th scope="row">1</th-->
+      <td>{{log.header}}</td>
+      <td>{{log.description}}</td>
+    </tr>
+  </tbody>
+</table>
