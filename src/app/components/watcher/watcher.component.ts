@@ -10,11 +10,19 @@ import { LogItem } from '../../models/watcher';
 export class WatcherComponent implements OnInit {
 
   logs: Array<LogItem>;
+  newItemsCount: number;
   constructor(private logService: LogService) { }
 
   ngOnInit() {
-    this.logService.getAll();
-    //   .subscribe(logs => { this.logs = logs; console.log(logs); });
+    this.logService.getAll()
+      .subscribe(logs => { this.logs = logs; });
+
+    this.logService.subscribeForUpdates()
+      .subscribe(logs => {
+        this.logs.push.apply(this.logs, logs);
+        this.newItemsCount = logs.length;
+        console.log(logs);
+      });
   }
 
 }

@@ -1,5 +1,5 @@
 
 export interface LogItem {
-    Header: string;
-    Description: string;
+    header: string;
+    description: string;
 }
